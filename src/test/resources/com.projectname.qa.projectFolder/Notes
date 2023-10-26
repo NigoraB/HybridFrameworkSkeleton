@@ -1,0 +1,30 @@
+/**Listeners are TestNG annotations that literally “listen” to the events in a script,
+ *  and modify TestNG behavior accordingly.
+ *  Listener annotation is used in selenium to generate logs or customize the 
+TestNG reports.
+We have to add first <listeners> class-name="Listener"/> tag into our 
+testng.xml file. Then create a Listener class which implements ITestListener 
+interface and override all the abstract methods from there. 
+The Listener class can be under any folder however Utilities package is 
+more proper to store it. 
+
+ITestListener has  methods like:
+- onStart- OnStart method is called when any Test starts.
+- onTestSuccess- onTestSuccess method is called on the success of any Test.
+- onTestFailure- onTestFailure method is called on the failure of any Test.
+- onTestSkipped- onTestSkipped method is called on skipped of any Test.
+- onTestFailedButWithinSuccessPercentage- method is called each time Test fails 
+but is within success percentage.
+- onFinish- onFinish method is called after all Tests are executed
+ * 
+ */
+ 
+ /**
+ *ExtentReport notes
+ * Determines the current system properties. Prints this property list out to
+ * the specified output stream. This method is useful for debugging. 1) run
+ * System.getProperties().list(System.out); 2)use properties to generate report
+ * extentReport.setSystemInfo("Java Version",
+ * System.getProperty("java.version"));
+ * 
+ */
