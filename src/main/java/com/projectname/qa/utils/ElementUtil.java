@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -18,8 +17,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.projectname.qa.factory.DriverFactory;
 
 public class ElementUtil {
 
@@ -34,6 +31,10 @@ public class ElementUtil {
 	public WebElement getElement(WebElement element) {
 		jsUtil.flash(element);
 		return element;
+	}
+
+	public WebElement getElement(By locator) {
+		return driver.findElement(locator);
 	}
 
 	public WebElement getElement(WebElement locator, int timeOut) {

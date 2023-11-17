@@ -100,6 +100,27 @@ public class JavaScriptUtil {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(false);", element);
 	}
+	
+	/**
+	 * example: "document.body.style.zoom = '400.0%'"
+	 * @param zoomPercentage
+	 */
+	public void zoomChromeEdge(String zoomPercentage) {
+		String zoom = "document.body.style.zoom = '"+zoomPercentage+"%'";
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript(zoom);
+	}
+	
+	/**
+	 * example: "document.body.style.MozTransform = 'scale(0.5)'; ";
+	 * @param zoomPercentage
+	 */
+	public void zoomFirefox(String zoomPercentage) {
+		String zoom = "document.body.style.MozTransform = 'scale("+zoomPercentage+")'";
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript(zoom);
+
+	}
 
 	public void drawBorder(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
