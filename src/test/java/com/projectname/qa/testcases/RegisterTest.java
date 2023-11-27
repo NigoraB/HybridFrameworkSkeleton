@@ -19,16 +19,15 @@ import com.projectname.qa.utils.Utilities;
  * 
  */
 public class RegisterTest extends DriverFactory {
-
+	WebDriver driver;
 	RegisterPage registerPage;
 	AccountSuccessPage accountSuccessPage;
 
 	public RegisterTest() {
 		super();
-
 	}
 
-	public WebDriver driver;
+	
 
 	@BeforeMethod
 	public void setup() {
@@ -97,7 +96,6 @@ public class RegisterTest extends DriverFactory {
 
 		String actualPasswordWarning = registerPage.retrievePasswordWarning();
 		Assert.assertEquals(actualPasswordWarning, dataProp.getProperty("passwordWarning"));
-
 	}
 
 	// initial TC
@@ -115,5 +113,4 @@ public class RegisterTest extends DriverFactory {
 		String actualSuccssesHeading = accountSuccessPage.retrieveAccountSuccessPageHeading();
 		Assert.assertEquals(actualSuccssesHeading, dataProp.getProperty("accountSuccesfullyCreatedHeading"));
 	}
-
 }

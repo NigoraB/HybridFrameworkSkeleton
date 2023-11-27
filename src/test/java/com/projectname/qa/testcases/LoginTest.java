@@ -14,14 +14,14 @@ import com.projectname.qa.factory.DriverFactory;
 import com.projectname.qa.pages.AccountPage;
 import com.projectname.qa.pages.HomePage;
 import com.projectname.qa.pages.LoginPage;
-import com.projectname.qa.utils.Utilities;
 import com.projectname.qa.utils.ExcellUtil;
+import com.projectname.qa.utils.Utilities;
 
 /**
  * 
  */
 public class LoginTest extends DriverFactory {
-
+//
 	public WebDriver driver;
 	LoginPage loginPage;
 	AccountPage accountPage;
@@ -35,8 +35,6 @@ public class LoginTest extends DriverFactory {
 		driver = initializeBrowserAndOpenAppURL(prop.getProperty("browserName"));
 		HomePage homePage = new HomePage(driver);
 		loginPage = homePage.navigateToLoginPage();
-//		homePage.clickOnMyAccount();
-//		loginPage = homePage.selectLoginOption();
 	}
 
 	@AfterMethod
@@ -44,7 +42,6 @@ public class LoginTest extends DriverFactory {
 		driver.quit();
 	}
 
-	// optimized version of login in a single line
 	// ------------------------------------------
 	@DataProvider
 	public Object[][] supplyTestData() {
@@ -54,7 +51,6 @@ public class LoginTest extends DriverFactory {
 
 	@Test(dataProvider = "supplyTestData")
 	public void verifyLoggingWithValidCredentials2(String email, String password) {
-
 		accountPage = loginPage.login(email, password);
 		Assert.assertTrue(accountPage.getDisplayStatusEditYourAccountInformationOption());
 	}
@@ -65,7 +61,6 @@ public class LoginTest extends DriverFactory {
 	public void TC_LF_001() {
 		accountPage = loginPage.login(prop.getProperty("validEmail"), prop.getProperty("validPwd"));
 		Assert.assertTrue(accountPage.getDisplayStatusEditYourAccountInformationOption());
-
 	}
 
 	@Test(description = "Verify logging into the Application using invalid credentials (i.e. Invalid email address and Invalid Password)")
@@ -91,7 +86,7 @@ public class LoginTest extends DriverFactory {
 		String expectedWarningMessage = dataProp.getProperty("emailPasswordNoMatchWarning");
 		Assert.assertEquals(actualWarningMessage, expectedWarningMessage, "Expected Warning Message is not displayed");
 	}
-	
+
 	@Test(description = "Verify logging into the Application without providing any credentials")
 	public void TC_LF_005() {
 
@@ -102,9 +97,6 @@ public class LoginTest extends DriverFactory {
 				"Expected Warning Message is not displayed");
 	}
 
-	
-	
-	
 	// ------------------------------------------
 	// login action in a multiple lines
 	@Test(description = "Verify logging into the Application using valid credentials")
@@ -114,7 +106,6 @@ public class LoginTest extends DriverFactory {
 		loginPage.enterPassword(prop.getProperty("validPwd"));
 		accountPage = loginPage.clickOnLoginBtn();
 		Assert.assertTrue(accountPage.getDisplayStatusEditYourAccountInformationOption());
-
 	}
 
 	@DataProvider(name = "validCredentialsSupplier")
@@ -128,8 +119,7 @@ public class LoginTest extends DriverFactory {
 
 		loginPage.enterEmailAddress(email);
 		loginPage.enterPassword(password);
-		loginPage.clickOnLoginBtn();
-		AccountPage accountPage = new AccountPage(driver);
+		accountPage = loginPage.clickOnLoginBtn();
 		Assert.assertTrue(accountPage.getDisplayStatusEditYourAccountInformationOption());
 	}
 
@@ -142,7 +132,4 @@ public class LoginTest extends DriverFactory {
 		String expectedWarningMessage = dataProp.getProperty("emailPasswordNoMatchWarning");
 		Assert.assertEquals(actualWarningMessage, expectedWarningMessage, "Expected Warning Message is not displayed");
 	}
-
-	
-
 }

@@ -92,5 +92,4 @@ public class HomePage {
 //		searchBtn.click();
 		return new SearchPage(driver);
 	}
-
 }

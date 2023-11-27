@@ -44,6 +44,10 @@ public class ElementUtil {
 	public List<WebElement> getElements(By locator) {
 		return driver.findElements(locator);
 	}
+	
+	public List<WebElement> getElements(List<WebElement> element) {
+		return element;
+	}
 
 	public void doSendKeys(WebElement locator, String value) {
 		WebElement element = getElement(locator);
@@ -193,6 +197,10 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
+	public WebElement waitForElementVisible(WebElement element, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		return wait.until(ExpectedConditions.visibilityOf(element));
+	}
 
 	/**
 	 * An expectation for checking that all elements present on the web page that
@@ -206,6 +214,11 @@ public class ElementUtil {
 	public List<WebElement> waitForElementsVisible(By locator, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+	}
+	
+	public List<WebElement> waitForElementsVisible(WebElement element, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		return wait.until(ExpectedConditions.visibilityOfAllElements(element));
 	}
 
 	/**
@@ -337,5 +350,10 @@ public class ElementUtil {
 		wait.until(ExpectedConditions.alertIsPresent());
 
 	}
+
+	/**
+	 * @param productHeader
+	 * @return
+	 */
 
 }

@@ -17,14 +17,13 @@ import com.projectname.qa.pages.SearchPage;
  * 
  */
 public class SearchTest extends DriverFactory {
+	WebDriver driver;
 	SearchPage searchPage;
+	HomePage homePage;
 
 	public SearchTest() {
 		super();
 	}
-
-	public WebDriver driver;
-	HomePage homePage;
 
 	@BeforeMethod
 	public void setup() {
@@ -41,7 +40,6 @@ public class SearchTest extends DriverFactory {
 	public void verifySearchWithValidProduct() {
 		searchPage = homePage.searchForProduct(dataProp.getProperty("validProduct"));
 		Assert.assertTrue(searchPage.displayStatusOfProduct());
-
 	}
 
 	@Test(priority = 2)
@@ -60,7 +58,6 @@ public class SearchTest extends DriverFactory {
 		String actualSearchMessage = searchPage.retrieveNoProductMessageText();
 		Assert.assertEquals(actualSearchMessage, dataProp.getProperty("NoProductTextInSearch"),
 				"Message is not matching");
-
 	}
 
 	// initial TC
@@ -70,7 +67,5 @@ public class SearchTest extends DriverFactory {
 		homePage.enterProductIntoSearchBox(dataProp.getProperty("validProduct"));
 		searchPage = homePage.clickOnSearchBtn();
 		Assert.assertTrue(searchPage.displayStatusOfProduct());
-
 	}
-
 }

@@ -5,6 +5,8 @@ package com.projectname.qa.factory;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
@@ -23,8 +25,8 @@ import com.projectname.qa.exception.FrameworkException;
 public class DriverFactory {
 
 	WebDriver driver;
-	public Properties prop;
-	public Properties dataProp;
+	protected Properties prop;
+	protected Properties dataProp;
 	File propFile;
 	File dataPropFile;
 	FileInputStream fis;
@@ -54,6 +56,22 @@ public class DriverFactory {
 		}
 	}
 
+	public Properties intializeProperties() {
+
+		prop = new Properties();
+		File proFile = new File(System.getProperty("user.dir") + "/src/test/resources/config/config.properties");
+
+		try {
+			FileInputStream fis = new FileInputStream(proFile);
+			prop.load(fis);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+
+		return prop;
+
+	}
+
 	public WebDriver initializeBrowserAndOpenAppURL(String browserName) {
 		if (browserName.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
@@ -65,7 +83,7 @@ public class DriverFactory {
 		} else if (browserName.equalsIgnoreCase("edge")) {
 			driver = new EdgeDriver();
 		} else {
-			System.out.println("plz pass the right browser name...." + browserName);	
+			System.out.println("plz pass the right browser name...." + browserName);
 			throw new FrameworkException("NO BROWSER FOUND EXCEPTION....");
 		}
 		driver.manage().window().maximize();

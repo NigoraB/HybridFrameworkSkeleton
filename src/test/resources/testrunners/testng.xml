@@ -10,6 +10,8 @@
 			<class name="com.projectname.qa.testcases.RegisterTest" />
 			<class name="com.projectname.qa.testcases.LoginTest" />
 			<class name="com.projectname.qa.testcases.SearchTest" />
+			<class name="com.projectname.qa.testcases.AccountsPageTest" />
+			<class name="com.projectname.qa.testcases.ProductPageInfoTest" />
 		</classes>
 	</test> <!--
 	Test -->

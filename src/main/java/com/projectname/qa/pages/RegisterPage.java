@@ -21,7 +21,6 @@ public class RegisterPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		eleUtil = new ElementUtil(driver);
-
 	}
 
 //Objects
@@ -209,5 +208,4 @@ public class RegisterPage {
 //		continueButton.click();
 		return new AccountSuccessPage(driver);
 	}
-
 }

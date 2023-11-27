@@ -39,8 +39,6 @@ public class LoginPage  {
 	
 	
 	//Actions
-	
-	
 	public void enterEmailAddress(String emailText) {
 		eleUtil.doSendKeys(emailAddressField, emailText);
 	//	emailAddressField.sendKeys(emailText);
@@ -51,7 +49,6 @@ public class LoginPage  {
 	//	passwordField.sendKeys(passwordText);
 
 	}
-
 	
 	public AccountPage clickOnLoginBtn() {
 		eleUtil.doClick(loginButton);
@@ -74,5 +71,4 @@ public class LoginPage  {
 //		String warningText = warning.getText();
 		return warningText;
 	}
-
 }

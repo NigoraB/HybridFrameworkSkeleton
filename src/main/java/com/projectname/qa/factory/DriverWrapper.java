@@ -48,7 +48,6 @@ public class DriverWrapper {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		// driver.get("https://clubs3qa1.scholastic.com/");
 		driver.get("https://www.hotels.com/");
-
 	}
 
 	@AfterMethod
@@ -59,5 +58,4 @@ public class DriverWrapper {
 	public static WebDriver getDriver() {
 		return driver;
 	}
-
 }
