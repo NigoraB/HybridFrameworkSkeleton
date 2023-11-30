@@ -93,7 +93,7 @@ public class AccountsPageTest extends DriverFactory {
 		return new Object[][] { { "Macbook", "MacBook Pro" } };
 //			{ "Macbook", "MacBook Air" }, { "iMac", "iMac" },
 //		
-//				{ "Apple", "Apple Cinema 30\"" }, { "Samsung", "Samsung SyncMaster 941BW" },
+//				{ "Apple", "Apple Cinema 30" }, { "Samsung", "Samsung SyncMaster 941BW" },
 //				{ "Samsung", "Samsung Galaxy Tab 10.1" }, };
 	}
 
