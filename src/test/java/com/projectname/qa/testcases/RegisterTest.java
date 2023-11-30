@@ -22,6 +22,7 @@ public class RegisterTest extends DriverFactory {
 	WebDriver driver;
 	RegisterPage registerPage;
 	AccountSuccessPage accountSuccessPage;
+	HomePage homePage;
 
 	public RegisterTest() {
 		super();
@@ -32,7 +33,7 @@ public class RegisterTest extends DriverFactory {
 	@BeforeMethod
 	public void setup() {
 		driver = initializeBrowserAndOpenAppURL(prop.getProperty("browserName"));
-		HomePage homePage = new HomePage(driver);
+		homePage = new HomePage(driver);
 		registerPage = homePage.navigateToRegisterPage();
 	}
 
@@ -80,22 +81,24 @@ public class RegisterTest extends DriverFactory {
 		registerPage.clickOnContinueButton();
 
 		String actualPrivacyPolicyWarning = registerPage.retrievePrivasyPolicyWarning();
-		Assert.assertEquals(actualPrivacyPolicyWarning, dataProp.getProperty("privacyPolicyWarning"));
+		softAssert.assertEquals(actualPrivacyPolicyWarning, dataProp.getProperty("privacyPolicyWarning"));
 
 		String actualFirstNameWarning = registerPage.retrieveFirstNameWarning();
-		Assert.assertEquals(actualFirstNameWarning, dataProp.getProperty("firstNameWarning"));
+		softAssert.assertEquals(actualFirstNameWarning, dataProp.getProperty("firstNameWarning"));
 
 		String actualLastNameWarning = registerPage.retrieveLastNameWarning();
-		Assert.assertEquals(actualLastNameWarning, dataProp.getProperty("lastNameWarning"));
+		softAssert.assertEquals(actualLastNameWarning, dataProp.getProperty("lastNameWarning"));
 
 		String actualEmailWarning = registerPage.retrieveEmailWarning();
-		Assert.assertEquals(actualEmailWarning, dataProp.getProperty("emailAddressWarning"));
+		softAssert.assertEquals(actualEmailWarning, dataProp.getProperty("emailAddressWarning"));
 
 		String actualTelephoneWarning = registerPage.retrieveTelephoneWarning();
-		Assert.assertEquals(actualTelephoneWarning, dataProp.getProperty("telephoneWarning"));
+		softAssert.assertEquals(actualTelephoneWarning, dataProp.getProperty("telephoneWarning"));
 
 		String actualPasswordWarning = registerPage.retrievePasswordWarning();
-		Assert.assertEquals(actualPasswordWarning, dataProp.getProperty("passwordWarning"));
+		softAssert.assertEquals(actualPasswordWarning, dataProp.getProperty("passwordWarning"));
+		
+		softAssert.assertAll();
 	}
 
 	// initial TC

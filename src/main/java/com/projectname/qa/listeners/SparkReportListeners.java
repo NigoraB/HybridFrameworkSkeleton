@@ -17,7 +17,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.projectname.qa.utils.Utilities;
 
-public class SparkReportListener implements ITestListener {
+public class SparkReportListeners implements ITestListener {
 	ExtentReports extentReport;
 	ExtentTest extentTest;
 	String testName;

@@ -15,6 +15,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
 
 import com.projectname.qa.constants.AppConstants;
 import com.projectname.qa.exception.FrameworkException;
@@ -27,6 +30,7 @@ public class DriverFactory {
 	WebDriver driver;
 	protected Properties prop;
 	protected Properties dataProp;
+	protected SoftAssert softAssert;
 	File propFile;
 	File dataPropFile;
 	FileInputStream fis;
@@ -72,6 +76,18 @@ public class DriverFactory {
 
 	}
 
+	public void loadTestData() {
+		prop = new Properties();
+		propFile = new File(
+				System.getProperty("user.dir") + "/src/main/java/com/projectname/qa/testdata/testdata.properties");
+		try {
+			fis = new FileInputStream(propFile);
+			prop.load(fis);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public WebDriver initializeBrowserAndOpenAppURL(String browserName) {
 		if (browserName.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
@@ -90,7 +106,15 @@ public class DriverFactory {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(AppConstants.IMPLICIT_WAIT_TIME));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(AppConstants.PAIGE_WAIT_TIME));
 		driver.get(prop.getProperty("url").trim());
+		
+		softAssert = new SoftAssert();
+		
 		return driver;
+	}
+
+	@AfterMethod
+	public void tearDown() {
+		driver.quit();
 	}
 
 }

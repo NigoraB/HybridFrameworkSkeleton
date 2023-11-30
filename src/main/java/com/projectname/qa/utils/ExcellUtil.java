@@ -16,11 +16,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * 
  */
 public class ExcellUtil {
-	
-	private static final String TEST_DATA_SHEET_PATH = "./src/main/java/com/projectname/qa/testdata/testdata.xlsx";
 
 	public static Object[][] getTestDataFromExcel(String sheetName) {
-		File excelFile = new File(TEST_DATA_SHEET_PATH);
+		File excelFile = new File(System.getProperty("user.dir")+"/src/main/java/com/projectname/qa/testdata/testdata.xlsx");
 		XSSFWorkbook workbook = null;
 		try {
 			FileInputStream fis = new FileInputStream(excelFile);

@@ -20,20 +20,21 @@ import com.projectname.qa.utils.Utilities;
 /**
  * 
  */
-public class LoginTest extends DriverFactory {
+public class LoginPageTest extends DriverFactory {
 //
 	public WebDriver driver;
 	LoginPage loginPage;
 	AccountPage accountPage;
+	HomePage homePage;
 
-	public LoginTest() {
+	public LoginPageTest() {
 		super();
 	}
 
 	@BeforeMethod
 	public void setup() {
 		driver = initializeBrowserAndOpenAppURL(prop.getProperty("browserName"));
-		HomePage homePage = new HomePage(driver);
+		homePage = new HomePage(driver);
 		loginPage = homePage.navigateToLoginPage();
 	}
 
@@ -45,13 +46,32 @@ public class LoginTest extends DriverFactory {
 	// ------------------------------------------
 	@DataProvider
 	public Object[][] supplyTestData() {
-		Object[][] data = { { "qa.test@gmail.com", "validPassword@123" } };
+		Object[][] data = { { "qa.test@gmail.com", "validPassword@123" },
+				{"qa.test3@gmail.com", "validPassword@456"}};
 		return data;
 	}
 
 	@Test(dataProvider = "supplyTestData")
 	public void verifyLoggingWithValidCredentials2(String email, String password) {
 		accountPage = loginPage.login(email, password);
+		Assert.assertTrue(accountPage.getDisplayStatusEditYourAccountInformationOption());
+		
+	}
+	
+	// ------------------------------------------
+	
+	@DataProvider(name = "validCredentialsSupplier")
+	public Object[][] getTestData() {
+		Object[][] data = ExcellUtil.getTestDataFromExcel("Login");
+		return data;
+	}
+
+	@Test(dataProvider = "validCredentialsSupplier", description = "Verify logging into the Application using valid credentials")
+	public void verifyLoggingWithValidCredentials3(String email, String password) {
+
+		loginPage.enterEmailAddress(email);
+		loginPage.enterPassword(password);
+		accountPage = loginPage.clickOnLoginBtn();
 		Assert.assertTrue(accountPage.getDisplayStatusEditYourAccountInformationOption());
 	}
 
@@ -107,21 +127,7 @@ public class LoginTest extends DriverFactory {
 		accountPage = loginPage.clickOnLoginBtn();
 		Assert.assertTrue(accountPage.getDisplayStatusEditYourAccountInformationOption());
 	}
-
-	@DataProvider(name = "validCredentialsSupplier")
-	public Object[][] getTestData() {
-		Object[][] data = ExcellUtil.getTestDataFromExcel("Login");
-		return data;
-	}
-
-	@Test(dataProvider = "validCredentialsSupplier", description = "Verify logging into the Application using valid credentials")
-	public void verifyLoggingWithValidCredentials3(String email, String password) {
-
-		loginPage.enterEmailAddress(email);
-		loginPage.enterPassword(password);
-		accountPage = loginPage.clickOnLoginBtn();
-		Assert.assertTrue(accountPage.getDisplayStatusEditYourAccountInformationOption());
-	}
+	// ------------------------------------------
 
 	@Test(description = "Verify logging into the Application using invalid credentials")
 	public void verifyLogingWithInvalidCredentials() {

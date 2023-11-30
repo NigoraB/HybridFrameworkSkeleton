@@ -173,7 +173,7 @@ public class RegisterPage {
 		eleUtil.doSendKeys(lastNameField, lastNameText);
 		eleUtil.doClick(privacyPolicyField);
 		eleUtil.doClick(continueButton);
-		
+
 //		firstNameField.sendKeys(firstNameText);
 //		lastNameField.sendKeys(lastNameText);
 //		emailAddressField.sendKeys(emailText);
@@ -196,7 +196,7 @@ public class RegisterPage {
 		eleUtil.doClick(yesNewsLetterOption);
 		eleUtil.doClick(privacyPolicyField);
 		eleUtil.doClick(continueButton);
-		
+
 //		firstNameField.sendKeys(firstNameText);
 //		lastNameField.sendKeys(lastNameText);
 //		emailAddressField.sendKeys(emailText);
@@ -207,5 +207,14 @@ public class RegisterPage {
 //		privacyPolicyField.click();
 //		continueButton.click();
 		return new AccountSuccessPage(driver);
+	}
+
+	public void displayStatusOfWarningMessages(String expectedprivacyPolicyWarning, String expectedFirstnameWarning, String expectedLastNameWarning, String expectedEmailWarning, String expectedTelephoneWarning, String expectedPasswordWarning) {
+		String privacyPolicyWarningText = eleUtil.doElementGetText(privacyPolicyWarning);
+		String firstNameWarningText = eleUtil.doElementGetText(firstNameWarning);
+		String lastNameWarningText = eleUtil.doElementGetText(lastNameWarning);
+		String emailWarningText = eleUtil.doElementGetText(emailWarning);
+		String telephoneWarningText = eleUtil.doElementGetText(telephoneWarning);
+		String passwordWarningText = eleUtil.doElementGetText(passwordWarning);
 	}
 }

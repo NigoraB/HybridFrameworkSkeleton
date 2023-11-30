@@ -26,6 +26,7 @@ public class ProductPageInfoTest extends DriverFactory {
 	
 	ArrayList<String> expProdListInCart;
 	WebDriver driver;
+	HomePage homePage;
 	LoginPage loginPage;
 	AccountPage accountPage;
 	SearchPage searchPage;
@@ -39,7 +40,7 @@ public class ProductPageInfoTest extends DriverFactory {
 	@BeforeMethod
 	public void productInfoPageSetup() {
 		driver = initializeBrowserAndOpenAppURL(prop.getProperty("browserName"));
-		HomePage homePage = new HomePage(driver);
+		homePage = new HomePage(driver);
 		loginPage = homePage.navigateToLoginPage();
 		accountPage = loginPage.login(prop.getProperty("validEmail"), prop.getProperty("validPwd"));
 	}

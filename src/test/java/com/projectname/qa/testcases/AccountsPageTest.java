@@ -20,6 +20,7 @@ import com.projectname.qa.pages.SearchPage;
 public class AccountsPageTest extends DriverFactory {
 
 	WebDriver driver;
+	HomePage homePage;
 	LoginPage loginPage;
 	AccountPage accountPage;
 	SearchPage searchPage;
@@ -32,7 +33,7 @@ public class AccountsPageTest extends DriverFactory {
 	@BeforeMethod
 	public void setup() {
 		driver = initializeBrowserAndOpenAppURL(prop.getProperty("browserName"));
-		HomePage homePage = new HomePage(driver);
+		homePage = new HomePage(driver);
 		loginPage = homePage.navigateToLoginPage();
 		accountPage = loginPage.login(prop.getProperty("validEmail"), prop.getProperty("validPwd"));
 	}
