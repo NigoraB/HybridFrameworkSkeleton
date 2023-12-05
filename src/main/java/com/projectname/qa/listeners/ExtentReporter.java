@@ -19,10 +19,11 @@ public class ExtentReporter {
 				System.getProperty("user.dir") + "/test-output/ExtentReport/extentReport.html");
 		ExtentSparkReporter sparkReporter = new ExtentSparkReporter(extentReportFile);
 		// setting spark report configuration
-		sparkReporter.config().setTheme(Theme.DARK);
+
 		sparkReporter.config().setReportName(" Test Automation Project Result");
 		sparkReporter.config().setDocumentTitle("Test Automation Report");
-		sparkReporter.config().setTimeStampFormat("dd/MM/yyyy hh:mm:ss");
+	//	sparkReporter.config().setTheme(Theme.DARK);
+	//  sparkReporter.config().setTimeStampFormat("dd/MM/yyyy hh:mm:ss");
 		extentReport.attachReporter(sparkReporter);
 
 		Properties configProp = new Properties();

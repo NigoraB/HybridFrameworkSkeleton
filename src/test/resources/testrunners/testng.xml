@@ -3,7 +3,7 @@
 <suite name="Project Automation Suite" thread-count="3"
 	parallel="tests" verbose="4">
 	<listeners>
-		<listener class-name="com.projectname.qa.listeners.SparkReportListener" />
+		<listener class-name="com.projectname.qa.listeners.SparkReportListeners" />
 	</listeners>
 	<test name="Project Tests">
 		<classes>

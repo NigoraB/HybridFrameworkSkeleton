@@ -19,7 +19,7 @@ import com.projectname.qa.pages.SearchPage;
 
 public class AccountsPageTest extends DriverFactory {
 
-	WebDriver driver;
+	public WebDriver driver;
 	HomePage homePage;
 	LoginPage loginPage;
 	AccountPage accountPage;

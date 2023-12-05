@@ -19,7 +19,7 @@ import com.projectname.qa.utils.Utilities;
  * 
  */
 public class RegisterTest extends DriverFactory {
-	WebDriver driver;
+	public WebDriver driver;
 	RegisterPage registerPage;
 	AccountSuccessPage accountSuccessPage;
 	HomePage homePage;

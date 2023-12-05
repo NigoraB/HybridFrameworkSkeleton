@@ -17,7 +17,7 @@ import com.projectname.qa.pages.SearchPage;
  * 
  */
 public class SearchTest extends DriverFactory {
-	WebDriver driver;
+	public WebDriver driver;
 	SearchPage searchPage;
 	HomePage homePage;
 

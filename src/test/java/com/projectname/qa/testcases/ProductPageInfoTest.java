@@ -25,7 +25,7 @@ public class ProductPageInfoTest extends DriverFactory {
 	
 	
 	ArrayList<String> expProdListInCart;
-	WebDriver driver;
+	public WebDriver driver;
 	HomePage homePage;
 	LoginPage loginPage;
 	AccountPage accountPage;
