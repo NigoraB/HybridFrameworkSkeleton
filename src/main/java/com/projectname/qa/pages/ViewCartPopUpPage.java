@@ -28,7 +28,7 @@ public class ViewCartPopUpPage {
 	
 	
 	public List<String> getProductsValueListInCart() {
-		List<WebElement> cartList = eleUtil.waitForElementsVisible(productNames, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
+		List<WebElement> cartList = eleUtil.waitForElementsVisible(productNames, AppConstants.EXPLICIT_WAIT_TIME);
 		ArrayList<String> cartProdList = new ArrayList<String>();
 		for(WebElement e : cartList) {
 			String text = e.getText();

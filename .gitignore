@@ -1,2 +1,15 @@
-/target/
-/test-output/
+bin/
+.spark/
+spark-results/
+ExportData/
+ExtentReports/
+logs/
+target/
+test-output/
+reports/
+*.png
+*.jpg
+*.mp4
+*.avi
+*.zip
+spark-report/

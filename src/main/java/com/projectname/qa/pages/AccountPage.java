@@ -43,25 +43,25 @@ public class AccountPage {
 	private WebElement editYourAccountInformationOption;
 
 	public String getAccPageTitle() {
-		String title = eleUtil.waitForTitleIsAndFetch(AppConstants.DEFAULT_SHORT_TIME_OUT,
+		String title = eleUtil.waitForTitleIsAndFetch(AppConstants.PAIGE_WAIT_TIME,
 				AppConstants.ACCOUNTS_PAGE_TITLE_VALUE);
 		System.out.println("Acc page title is : " + title);
 		return title;
 	}
 
 	public String getAccPageURL() {
-		String url = eleUtil.waitForURLContainsAndFetch(AppConstants.DEFAULT_SHORT_TIME_OUT,
+		String url = eleUtil.waitForURLContainsAndFetch(AppConstants.PAIGE_WAIT_TIME,
 				AppConstants.ACCOUNTS_PAGE_URL_FRACTION_VALUE);
 		System.out.println("Acc page url : " + url);
 		return url;
 	}
 
 	public boolean isLogoutLinkExist() {
-		return eleUtil.waitForElementVisible(logoutLink, AppConstants.DEFAULT_MEDIUM_TIME_OUT).isDisplayed();
+		return eleUtil.waitForElementVisible(logoutLink, AppConstants.EXPLICIT_WAIT_TIME).isDisplayed();
 	}
 
 	public boolean isSearchExist() {
-		return eleUtil.waitForElementVisible(search, AppConstants.DEFAULT_MEDIUM_TIME_OUT).isDisplayed();
+		return eleUtil.waitForElementVisible(search, AppConstants.EXPLICIT_WAIT_TIME).isDisplayed();
 	}
 	
 	public List<String> getAccountsPageHeadersList() {

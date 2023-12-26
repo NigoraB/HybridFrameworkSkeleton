@@ -52,14 +52,14 @@ public class SearchPage {
 		return noProductMessageText;
 	}
 	public int getSearchProductsCount() {
-		int productCount = eleUtil.waitForElementsVisible(searchProductResults, AppConstants.DEFAULT_MEDIUM_TIME_OUT).size();
+		int productCount = eleUtil.waitForElementsVisible(searchProductResults, AppConstants.EXPLICIT_WAIT_TIME).size();
 		System.out.println("Product Count:::" + productCount);
 		return productCount;
 	}
 
 	public ProductInfoPage selectProduct(String productName) {
 		By productLocator = By.linkText(productName);
-		eleUtil.waitForElementVisible(productLocator, AppConstants.DEFAULT_MEDIUM_TIME_OUT).click();
+		eleUtil.waitForElementVisible(productLocator, AppConstants.EXPLICIT_WAIT_TIME).click();
 		return new ProductInfoPage(driver);
 	}
 

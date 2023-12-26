@@ -70,7 +70,7 @@ public class ProductInfoPage {
 	
 	public String addProductToCart() {
 		eleUtil.doClick(addToCartBtn);
-		String successMessg = eleUtil.waitForElementVisible(cartSuccessMessg, AppConstants.DEFAULT_MEDIUM_TIME_OUT).getText();
+		String successMessg = eleUtil.waitForElementVisible(cartSuccessMessg, AppConstants.EXPLICIT_WAIT_TIME).getText();
 		StringBuilder sb = new StringBuilder(successMessg);
 		String mesg = sb.substring(0, successMessg.length()-1).replace("\n", "").toString();
 		

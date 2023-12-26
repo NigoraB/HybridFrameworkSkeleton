@@ -38,7 +38,8 @@ public class ElementUtil {
 	}
 
 	public WebElement getElement(WebElement locator, int timeOut) {
-		return waitForElementVisible((By) locator, timeOut);
+		return waitForElementVisible( locator, timeOut);
+		
 	}
 
 	public List<WebElement> getElements(By locator) {
@@ -180,7 +181,7 @@ public class ElementUtil {
 	 */
 	public WebElement waitForElementPresence(WebElement element, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
-		return wait.until(ExpectedConditions.presenceOfElementLocated((By) element));
+		return wait.until(ExpectedConditions.visibilityOf(element));
 
 	}
 

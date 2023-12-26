@@ -18,6 +18,7 @@ import org.openqa.selenium.io.FileHandler;
 public class Utilities {
 
 	public static String generateEmailWithTimestamp() {
+
 		Date date = new Date();
 		String timestamp = date.toString().replace(" ", "_").replace(":", "_");
 		return "test" + timestamp + "@gmail.com";
